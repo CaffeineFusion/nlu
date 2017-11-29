@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# configuration for various services
+config.json

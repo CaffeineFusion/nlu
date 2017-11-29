@@ -1,8 +1,16 @@
 'use strict';
 // server.js
-const express         = require('express');
-const helmet          = require('helmet');
-const app             = express();
+const express           = require('express');
+const helmet            = require('helmet');
+const app               = express();
+const path              = require('path');
+const bodyParser        = require('body-parser');
+
+// load environmant configuration
+require('dotenv').config({silent:true});
+
+// Import route Modules
+let watson              = require(__dirname + '/routes/watson');
 
 app.use(helmet());
 
@@ -32,7 +40,9 @@ app.use(helmet.hsts({
 const DEFAULT_PORT            = 8080;
 const PORT                    = process.env.PORT || DEFAULT_PORT;
 
-app.use(express.static(__dirname + '/public'));
+// Initialise routing
+//app.use(express.static(__dirname + '/public'));
+app.use('/api/v1/watson', watson);
 
 app.get('*', function(req, res) {
     res.sendStatus(404);
@@ -40,7 +50,7 @@ app.get('*', function(req, res) {
 
 // Launch Server
 if(require.main === module) {
-    app.listen(PORT, function(){
+    app.listen(PORT, function() {
        console.log('App listening on port ' + PORT);
    });
 }

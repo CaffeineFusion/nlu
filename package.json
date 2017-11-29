@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/CaffeineFusion/nlu#readme",
   "dependencies": {
+    "dotenv": "4.0.0",
     "express": "4.16.2",
     "helmet": "3.9.0"
   }
