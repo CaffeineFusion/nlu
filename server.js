@@ -10,22 +10,24 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", 'ajax.googleapis.com',
-        'app://com.google.android.apps.chromecast.app',
-        'com.google.android.apps.chromecast.app'],
+        scriptSrc: ["'self'"//, 'ajax.googleapis.com',
+        //'app://com.google.android.apps.chromecast.app',
+        //'com.google.android.apps.chromecast.app'],
         //reportURI: [''],                                      //Specify server for external logging
-        connectSrc: [CONFIG.OAUTH_DOMAIN,
-            'oauth-redirect.googleusercontent.com',
-            'app://com.google.android.apps.chromecast.app',
-            'com.google.android.apps.chromecast.app']           //Redirect for Android Close Button
+        //connectSrc: [CONFIG.OAUTH_DOMAIN,
+        //    'oauth-redirect.googleusercontent.com',
+        //    'app://com.google.android.apps.chromecast.app',
+        //    'com.google.android.apps.chromecast.app'          //Redirect for Android Close Button
+        ]
     }
 }));
 
 // Force HTTPS - includes Subdomains by default
+/*
 app.use(helmet.hsts({
-  maxAge: 86400
+    maxAge: 86400
 }));
-
+*/
 
 const DEFAULT_PORT            = 8080;
 const PORT                    = process.env.PORT || DEFAULT_PORT;
