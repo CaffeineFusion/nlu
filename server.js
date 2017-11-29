@@ -3,12 +3,10 @@
 const express         = require('express');
 const helmet          = require('helmet');
 const app             = express();
-const CONFIG          = require('./config.json');
 
 app.use(helmet());
 
 // Specify explicit content sources. Only permit scripts from this host and our jQuery provider.
-// It also only allows connections [redirects] to the woolworths mobile api and google api for authentication.
 app.use(helmet.contentSecurityPolicy({
     directives: {
         defaultSrc: ["'self'"],
@@ -16,8 +14,8 @@ app.use(helmet.contentSecurityPolicy({
         'app://com.google.android.apps.chromecast.app',
         'com.google.android.apps.chromecast.app'],
         //reportURI: [''],                                      //Specify server for external logging
-        connectSrc: [CONFIG.OAUTH_DOMAIN,                       //Woolworths OAuth Server
-            'oauth-redirect.googleusercontent.com',             //Redirect returned from Woolworths
+        connectSrc: [CONFIG.OAUTH_DOMAIN,
+            'oauth-redirect.googleusercontent.com',
             'app://com.google.android.apps.chromecast.app',
             'com.google.android.apps.chromecast.app']           //Redirect for Android Close Button
     }
