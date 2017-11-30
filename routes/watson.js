@@ -1,3 +1,4 @@
+`strict mode`
 /*
   Initialised with Boilerplate code
 */
