@@ -21,7 +21,7 @@ router.post('/nlu', function(req, res) {
     //let sessionID = req.sessionID;
     nlu.analyse(text)
         .then((result) => { console.log(result); return result; })
-        .then({success:true, input:text, data:res.json})
+        .then((result) => { res.json({success:true, input:text, data:result})})
         .catch(console.log);
 
 });

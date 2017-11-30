@@ -24,7 +24,7 @@ function sendPayload(Connection, input) {
     return new Promise(function(resolve, reject) {
         var payload = input;
 
-        Connection.analyse(payload, function(err, res) {
+        Connection.analyze(payload, function(err, res) {
             if(err) {
                 console.log(err);
                 reject(err);
@@ -68,13 +68,13 @@ module.exports = class NLU {
             console.log('=== Input :', input, ' ===');
 
             sendPayload(self.Connection, input)
-                .then(response => self.transformation(response))
+                .then(response => self.transform(response))
                 //.then(resolve)
                 .then(function(result) {
                     console.log("=== Result : ", JSON.stringify(result), " ===");
                     resolve(result);
                 })
-                .catch(err => { console.log(err, input, context); reject(err); });
+                .catch(err => { console.log(err, input); reject(err); });
 
         });
 

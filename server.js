@@ -30,6 +30,9 @@ app.use(helmet.contentSecurityPolicy({
     }
 }));
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 // Force HTTPS - includes Subdomains by default
 /*
 app.use(helmet.hsts({
